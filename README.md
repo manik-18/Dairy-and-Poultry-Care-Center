@@ -1,5 +1,5 @@
 # Mini-Project-Using-Data-Structures
-The title of the project is "Dairy &amp; Poultry Care Center".
+## The title of the project is "Dairy &amp; Poultry Care Center".
 
 The project Poultry and Dairy Care Center is about managing the record or information of all
 the dairy animals and poultry birds that are present in the care center. Today, there are many
@@ -25,7 +25,7 @@ category……etc.
 
 ## Data Structures Used
 
-LINKED LISTS:
+**LINKED LISTS:**
 
 Here the linked list is used to store the pet’s information, such as its name, category, its
 owner’s name, contact of the owner, and the problem which pet has. The structure of the
@@ -39,7 +39,7 @@ collection of nodes in which each node consists of two parts, a data part that s
 actual information and a link part that stores the address of the next node means it points
 to the next node.
 
-SINGLY LINKED LIST:
+**SINGLY LINKED LIST:**
 
 It is the simplest type of linked list. A singly-linked list is a collection of nodes in which
 each node of the singly linked list contains two parts one is the data part or info part which
@@ -48,7 +48,7 @@ the next node. The nodes are connected via the links. There is also a start/head
 consists of the address of the first node means it will point to the first node and the linked
 part of the last’s node consists of a NULL value. 
 
-ARRAYS:
+**ARRAYS:**
 
 An array is a collection of similar types of data items and each data item is called an
 element of the array. The elements of the array share the same variable name but each
@@ -57,20 +57,12 @@ element has a different index number known as a subscript. In C the subscripts s
 Arrays can be single dimensional or multidimensional. The number of subscripts
 determines the dimension of an array.
 
-Declaration of a 1-D array:
+**Declaration of a 1-D array:**
 
 datatype array_name [SIZE]; 
 Here array_name denotes the name of the array and it can be any valid C identifier.
 Datatype is the datatype of the elements of an array.
 The size of the array specifies the number of elements that can be stored in the array. 
-
-## Hardware Requirements:
-
-A Computer or a laptop with the following requirements:
-**OS:** Windows, Mac, Linux, 
-**PROCESSOR:** Minimum INTEL i 3 / AMD RYZEN 3, 
-**RAM:** Minimum 2 gigabytes, 
-**ARCHITECTURE:** 32-bit or 62-bit
 
 ## Software requirements:
 
@@ -80,7 +72,7 @@ VISUAL STUDIO CODE ( IDE )
 
 ## Author
 
-@manik-18
+https://github.com/manik-18
 
 ## Contact:
 
