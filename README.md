@@ -67,18 +67,22 @@ The size of the array specifies the number of elements that can be stored in the
 ## Hardware Requirements:
 
 A Computer or a laptop with the following requirements:
-OS: Windows, Mac, Linux
-PROCESSOR: Minimum INTEL i 3 / AMD RYZEN 3
-RAM: Minimum 2 gigabytes
-ARCHITECTURE: 32-bit or 62-bit
+**OS:** Windows, Mac, Linux, 
+**PROCESSOR:** Minimum INTEL i 3 / AMD RYZEN 3, 
+**RAM:** Minimum 2 gigabytes, 
+**ARCHITECTURE:** 32-bit or 62-bit
 
 ## Software requirements:
 
-TURBO C/C++
-DEV C++
+TURBO C/C++, 
+DEV C++, 
 VISUAL STUDIO CODE ( IDE )
 
-##Contact:
+## Author
+
+@manik-18
+
+## Contact:
 
 If any issue is there or you want to give any type of feedback then mail me @guptamanik1810@gmail.com
 
