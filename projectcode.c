@@ -4,305 +4,371 @@ BY:- MANIK GUPTA
 */
 
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
-struct node
+struct Record
 {
-	char day[20], date[20], category[10], name[20], oname[20], problem[100], mob[20];
-	struct node *next;
+    char day[20], date[20], category[10], petName[20], ownerName[20], problem[100], contactNumber[11];
+    struct Record *next;
 };
 
-struct node *start = NULL;
-int i;
+struct Record *start = NULL;
 
-void add();     // This function is used to add new Record
-void modify();	// This function is used to modify any particular Record
-void delete();	// This function is used to delete any Record
-void search();	// This function is used to find or search any Record
-void display();	// This function is used to display all the Record
+void addRecord(const char *date, const char *day, const char *category, const char *petName, const char *ownerName, const char *problem, const char *contactNumber);
+void modifyRecord(const char *petName);
+void deleteRecord(const char *petName);
+void searchRecord(const char *petName);
+void displayRecords();
 
-void main()
+int isValidDate(const char *date);
+int isValidContactNumber(const char *number);
+
+void takeInputAndAddRecord();
+
+int main()
 {
-	int option;
-	char p[10], un[10], c;
-	start = NULL;
-	system("cls");
+    int option;
+    char password[10], username[10], choice;
 
-//  login code starts
+    start = NULL;
+    system("cls");
 
-	printf("\n\n\n\n\t\t\t\tLogin\n");
-	printf("\t\t\t*********************\n");
-	printf("\n\tEnter User ID: ");
-	scanf("%s", un);
-	printf("\n\tEnter your password : ");
-	scanf("%s", p);
-	if (strcmp(un, "Manik") == 0)
-	{
-		if (strcmp(p, "123") == 0)
-		{
-			printf("\n\t!!! LOGIN SUCCESSFUL !!!\n\n\tPress Enter to continue... ");
-		}
-		else
-		{
-			printf("\n\n\t\t!!! WRONG PASSWORD !!!");
-		}
-	}
-	else
-	{
-		printf("\n\n\t\t!!! INVALID USERNAME !!!");
-	}
-	getch();
-	if (strcmp(un, "Manik") == 0 && strcmp(p, "123") == 0)
-	
-	// login code ends
+    printf("\n\n\n\n\t\t\t\tLogin\n");
+    printf("\t\t\t*********************\n");
+    printf("\n\tEnter User ID: ");
+    scanf("%s", username);
+    printf("\n\tEnter your password: ");
+    scanf("%s", password);
 
-	{
-		system("cls");
-		printf("\t\t\t---------------------------\n");
-		printf("\t\t\t\tWELCOME\n");
-		printf("\t\t\t---------------------------\n");
-		printf("\t\t\tDAIRY & POULTRY CARE CENTRE\n");
-		printf("\t\t\t---------------------------\n");
+    if (strcmp(username, "Manik") == 0 && strcmp(password, "123") == 0)
+    {
+        printf("\n\t!!! LOGIN SUCCESSFUL !!!\n\n\tPress Enter to continue... ");
+        getch();
+        system("cls");
+        printf("\t\t\t---------------------------\n");
+        printf("\t\t\t\tWELCOME\n");
+        printf("\t\t\t---------------------------\n");
+        printf("\t\t\tLIVESTOCK LEDGER\n");
+        printf("\t\t\t---------------------------\n");
 
-		do
-		{
-			system("cls");
-			printf("\n\t\t\t\tMENU\n\t\t1. Enter new pet details\n\t\t2. Find pet details\n\t\t");
-			printf("3. Delete pet details\n\t\t4. Modify pet details\n\t\t5. Display all pets with their details\n\t\t6. Exit\n");
-			printf("\nChoose an option: ");
-			scanf("%d", &option);
-			switch (option)
-			{
-			case 1:
-				add();
-				break;
-			case 2:
-				search();
-				break;
-			case 3:
-				delete ();
-				break;
-			case 4:
-				modify();
-				break;
-			case 5:
-				display();
-				break;
-			case 6:
-				exit(0);
-				break;
-			default:
-				printf("!!! Enter a valid number !!!");
-				break;
-			}
-			printf("\nDo you want to continue ?(y/n)");
-			c = getche();
-		} while (c == 'y');
-	}
-	getch();
+        do
+        {
+            system("cls");
+            printf("\n\t\t\t\tMENU\n\t\t1. Enter new pet details\n\t\t2. Find pet details\n\t\t3. Delete pet details\n\t\t4. Modify pet details\n\t\t5. Display all pets with their details\n\t\t6. Exit\n");
+            printf("\nChoose an option: ");
+            scanf("%d", &option);
+            switch (option)
+            {
+            case 1:
+                system("cls");
+                takeInputAndAddRecord();
+                break;
+            case 2:
+            {
+                system("cls");
+                char petName[20];
+                printf("\nEnter the pet's name to search: ");
+                scanf(" %[^\n]s", petName);
+                searchRecord(petName);
+                break;
+            }
+            case 3:
+            {
+                system("cls");
+                char petName[20];
+                printf("\nEnter the pet's name to delete: ");
+                scanf(" %[^\n]s", petName);
+                deleteRecord(petName);
+                break;
+            }
+            case 4:
+            {
+                system("cls");
+                char petName[20];
+                printf("\nEnter the pet's name to modify: ");
+                scanf(" %[^\n]s", petName);
+                modifyRecord(petName);
+                break;
+            }
+            case 5:
+                system("cls");
+                displayRecords();
+                break;
+            case 6:
+                exit(0);
+                break;
+            default:
+                printf("!!! Enter a valid number !!!");
+                break;
+            }
+            printf("\n\nDo you want to continue? (y/n)");
+            scanf(" %c", &choice);
+        } while (choice == 'y' || choice == 'Y');
+    }
+    else
+    {
+        printf("\n\t!!! WRONG CREDENTIALS !!!\n\n\tPress Enter to continue... ");
+    }
+    getch();
 }
 
-void add()
+void takeInputAndAddRecord()
 {
-	struct node *temp, *newnode;
-	system("cls");
-	newnode = (struct node *)malloc(sizeof(struct node));
-	printf("\nEnter the date in (DD/MM/YY):  ");
-	scanf("%s", newnode->date);
-	printf("Enter the day: ");
-	scanf("%s", newnode->day);
-	printf("Is the pet is dairy or poultry:  ");
-	scanf("%s", newnode->category);
-	printf("Enter the name of pet:  ");
-	fflush(stdin);
-	scanf("%[^\n]s", newnode->name);
-	printf("Enter the pet's owner name:  ");
-	fflush(stdin);
-	scanf("%[^\n]s", newnode->oname);
-	printf("Enter the problem which pet has:  ");
-	fflush(stdin);
-	scanf("%[^\n]s", newnode->problem);
-	printf("Enter the correct contact of owner:  ");
-	scanf("%s", newnode->mob);
-	newnode->next = NULL;
-	if (start == NULL)
-	{
-		start = newnode;
-	}
-	else
-	{
-		temp = start;
-		while (temp->next != NULL)
-		{
-			temp = temp->next;
-		}
-		temp->next = newnode;
-	}
+    char date[20], day[20], category[10], petName[20], ownerName[20], problem[100], contactNumber[11];
 
-	printf("\n!!! Record added successfully !!!\n");
+    printf("Enter the date (DD/MM/YY):  ");
+    scanf("%s", date);
+    while (!isValidDate(date))
+    {
+        printf("\nInvalid date format.\n\nPlease enter a valid date (DD/MM/YY): ");
+        scanf("%s", date);
+    }
+
+    printf("Enter the day: ");
+    scanf("%s", day);
+
+    printf("Is the pet dairy or poultry?  ");
+    scanf("%s", category);
+
+    printf("Enter the pet's name:  ");
+    scanf(" %[^\n]s", petName);
+
+    printf("Enter the owner's name:  ");
+    scanf(" %[^\n]s", ownerName);
+
+    printf("Enter the problem the pet has:  ");
+    scanf(" %[^\n]s", problem);
+
+    printf("Enter the contact number of the owner (10 digits):  ");
+    scanf("%s", contactNumber);
+    while (!isValidContactNumber(contactNumber))
+    {
+        printf("\nInvalid contact number.\n\nPlease enter a 10-digit number: ");
+        scanf("%s", contactNumber);
+    }
+
+    addRecord(date, day, category, petName, ownerName, problem, contactNumber);
 }
 
-void modify()
+void addRecord(const char *date, const char *day, const char *category, const char *petName, const char *ownerName, const char *problem, const char *contactNumber)
 {
-	struct node *temp;
-	char item1[20], item2[20];
-	temp = start;
-	system("cls");
+    struct Record *temp, *newRecord;
 
-	if (start == NULL)
-	{
-		printf("\n!!! Add Record first !!!\n");
-	}
-	else
-	{
-		printf("Enter the name of the pet whose record you want to update: ");
-		fflush(stdin);
-		scanf("%[^\n]s", item1);
-		printf("Enter the date on which the pet is admitted:               ");
-		scanf("%s", item2);
-		while (strcmpi(temp->date, item2) != 0 && temp->next != NULL && strcmpi(temp->name, item1) != 0)
-		{
-			temp = temp->next;
-		}
-		if ((strcmpi(temp->date, item2) == 0) && (strcmpi(temp->name, item1) == 0))
-		{
-			printf("\nRecord with name %s and date %s is found\n", item1, item2);
-			printf("\nPlease enter the new record\n");
-			printf("\nEnter the date: ");
-			scanf("%s", temp->date);
-			printf("Enter the day: ");
-			scanf("%s", temp->day);
-			printf("Is the pet is dairy or poultry: ");
-			scanf("%s", temp->category);
-			printf("Enter the name of pet: ");
-			fflush(stdin);
-			scanf("%[^\n]s", temp->name);
-			printf("Enter the pet's owner name: ");
-			fflush(stdin);
-			scanf("%[^\n]s", temp->oname);
-			printf("Enter the problem which pet has: ");
-			fflush(stdin);
-			scanf("%[^\n]s", temp->problem);
-			printf("Enter the correct contact of owner: ");
-			scanf("%s", temp->mob);
+    newRecord = (struct Record *)malloc(sizeof(struct Record));
+    strcpy(newRecord->date, date);
+    strcpy(newRecord->day, day);
+    strcpy(newRecord->category, category);
+    strcpy(newRecord->petName, petName);
+    strcpy(newRecord->ownerName, ownerName);
+    strcpy(newRecord->problem, problem);
+    strcpy(newRecord->contactNumber, contactNumber);
 
-			printf("\n!!! Record Updated Successful !!!\n");
-		}
-		else
-		{
-			printf("\n!!! Record is not found !!!\n");
-		}
-	}
+    newRecord->next = NULL;
+
+    if (start == NULL)
+    {
+        start = newRecord;
+    }
+    else
+    {
+        temp = start;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newRecord;
+    }
+
+    printf("\nRecord added successfully!");
 }
 
-void delete ()
+void modifyRecord(const char *petName)
 {
-	struct node *temp = start;
-	struct node *q;
-	char item1[20], item2[20];
-	system("cls");
-	if (start == NULL)
-	{
-		printf("\n!!! First add Record to delete !!!\n");
-	}
-	else
-	{
-		printf("Enter the name of the pet whose record you want to delete: ");
-		fflush(stdin);
-		scanf("%[^\n]s", item1);
-		printf("Enter the date on which the pet is admitted: ");
-		scanf("%s", item2);
-		if (strcmp(temp->date, item2) == 0 && strcmp(temp->name, item1) == 0)
-		{
-			start = start->next;
-			printf("\n!!! Record deleted !!!\n");
-		}
-		else
-		{
-			while (strcmp(temp->date, item2) != 0 && strcmp(temp->name, item1) != 0 && temp != NULL)
-			{
-				q = temp;
-				temp = temp->next;
-			}
-			if (strcmp(temp->date, item2) == 0 && strcmp(temp->name, item1) == 0)
-			{
-				q->next = temp->next;
-				printf("\n!!! Record deleted !!!\n");
-			}
-			else
-			{
-				printf("\n!!! Record not found !!!\n");
-			}
-		}
-	}
+    struct Record *temp = start;
+
+    if (temp == NULL)
+    {
+        printf("\nNo records found.");
+        return;
+    }
+
+    while (temp != NULL)
+    {
+        if (strcmp(temp->petName, petName) == 0)
+        {
+            char date[20], day[20], category[10], ownerName[20], problem[100], contactNumber[11];
+
+            printf("Enter the new date (DD/MM/YY): ");
+            scanf("%s", date);
+            while (!isValidDate(date))
+            {
+                printf("\nInvalid date format.\n\nPlease enter a valid date (DD/MM/YY): ");
+                scanf("%s", date);
+            }
+
+            printf("Enter the new day: ");
+            scanf("%s", day);
+
+            printf("Enter the new category (dairy or poultry): ");
+            scanf("%s", category);
+
+            printf("Enter the new pet's name: ");
+            scanf(" %[^\n]s", petName);
+
+            printf("Enter the new owner's name: ");
+            scanf(" %[^\n]s", ownerName);
+
+            printf("Enter the new problem the pet has: ");
+            scanf(" %[^\n]s", problem);
+
+            printf("Enter the new contact number of the owner (10 digits): ");
+            scanf("%s", contactNumber);
+            while (!isValidContactNumber(contactNumber))
+            {
+                printf("\nInvalid contact number.\n\nPlease enter a 10-digit number: ");
+                scanf("%s", contactNumber);
+            }
+
+            strcpy(temp->date, date);
+            strcpy(temp->day, day);
+            strcpy(temp->category, category);
+            strcpy(temp->petName, petName);
+            strcpy(temp->ownerName, ownerName);
+            strcpy(temp->problem, problem);
+            strcpy(temp->contactNumber, contactNumber);
+
+            printf("\nRecord modified successfully!");
+            return;
+        }
+        temp = temp->next;
+    }
+
+    printf("\nPet's name not found in records.");
 }
 
-void search()
+void deleteRecord(const char *petName)
 {
-	struct node *temp = start;
-	char item1[20], item2[20];
-	system("cls");
+    struct Record *temp = start;
+    struct Record *prev = NULL;
 
-	if (start == NULL)
-	{
-		printf("\n!!! Add record first !!!\n");
-	}
-	else
-	{
-		printf("Enter the name of the animal whose record you want to search: \n");
-		fflush(stdin);
-		scanf("%[^\n]s", item1);
-		printf("Enter the date on which the pet is admitted: \n");
-		scanf("%s", item2);
-		while (strcmpi(temp->date, item2) != 0 && temp->next != 0 && strcmpi(temp->name, item1) != 0)
-		{
-			temp = temp->next;
-		}
-		if ((strcmpi(temp->date, item2) == 0) && (strcmpi(temp->name, item1) == 0))
-		{
-			printf("\n!!! Record Found !!!\n");
-			printf("\nDate: %s\n", temp->date);
-			printf("Day: %s\n", temp->day);
-			printf("Category: %s\n", temp->category);
-			printf("Name of pet: %s\n", temp->name);
-			printf("Owner's name: %s\n", temp->oname);
-			printf("Problem of pet: ");
-			printf("%s", temp->problem);
-			printf("\nContact of owner: %s\n", temp->mob);
-		}
-		else
-		{
-			printf("\n!!! Record is not found !!!\n");
-		}
-	}
+    if (temp == NULL)
+    {
+        printf("\nNo records found.");
+        return;
+    }
+
+    while (temp != NULL)
+    {
+        if (strcmp(temp->petName, petName) == 0)
+        {
+            if (prev == NULL)
+            {
+                start = temp->next;
+            }
+            else
+            {
+                prev->next = temp->next;
+            }
+
+            free(temp);
+            printf("\nRecord deleted successfully!");
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    printf("\nPet's name not found in records.");
 }
 
-void display()
+void searchRecord(const char *petName)
 {
-	struct node *temp;
-	system("cls");
-	temp = start;
-	if (start == NULL)
-	{
-		printf("\n!!! Nothing to display !!!\n");
-	}
-	else
-	{
-		while (temp != NULL)
-		{
-			printf("\nThe record is given below:\n");
-			printf("\nDate: %s\n", temp->date);
-			printf("Day: %s\n", temp->day);
-			printf("Category: %s\n", temp->category);
-			printf("Name of pet: %s\n", temp->name);
-			printf("Owner's name: %s\n", temp->oname);
-			printf("Problem of pet: ");
-			printf("%s", temp->problem);
-			printf("\nContact of owner: %s\n", temp->mob);
-			temp = temp->next;
-		}
-	}
+    struct Record *temp = start;
+
+    if (temp == NULL)
+    {
+        printf("\nNo records found.");
+        return;
+    }
+
+    while (temp != NULL)
+    {
+        if (strcmp(temp->petName, petName) == 0)
+        {
+            printf("\nRecord found!\n");
+            printf("Date: %s\n", temp->date);
+            printf("Day: %s\n", temp->day);
+            printf("Category: %s\n", temp->category);
+            printf("Pet's Name: %s\n", temp->petName);
+            printf("Owner's Name: %s\n", temp->ownerName);
+            printf("Problem: %s\n", temp->problem);
+            printf("Contact Number: %s\n", temp->contactNumber);
+            return;
+        }
+        temp = temp->next;
+    }
+
+    printf("\nPet's name not found in records.");
 }
 
+void displayRecords()
+{
+    struct Record *temp = start;
+
+    if (temp == NULL)
+    {
+        printf("\nNo records found.");
+        return;
+    }
+
+    printf("\nRecords:");
+    printf("\n---------------------------\n");
+    while (temp != NULL)
+    {
+        printf("\nDate: %s\n", temp->date);
+        printf("Day: %s\n", temp->day);
+        printf("Category: %s\n", temp->category);
+        printf("Pet's Name: %s\n", temp->petName);
+        printf("Owner's Name: %s\n", temp->ownerName);
+        printf("Problem: %s\n", temp->problem);
+        printf("Contact Number: %s\n", temp->contactNumber);
+        printf("---------------------------\n");
+
+        temp = temp->next;
+    }
+}
+
+int isValidDate(const char *date)
+{
+    // Check if the date is in DD/MM/YY format
+    if (strlen(date) != 8)
+        return 0;
+
+    int day = (date[0] - '0') * 10 + (date[1] - '0');
+    int month = (date[3] - '0') * 10 + (date[4] - '0');
+    int year = (date[6] - '0') * 10 + (date[7] - '0');
+
+    // Check if the day, month, and year are valid
+    if (day <= 0 || day > 31 || month <= 0 || month > 12 || year < 0)
+        return 0;
+
+    return 1;
+}
+
+int isValidContactNumber(const char *number)
+{
+    // Check if the contact number is 10 digits
+    if (strlen(number) != 10)
+        return 0;
+
+    // Check if all characters are digits
+    for (int i = 0; i < 10; i++)
+    {
+        if (number[i] < '0' || number[i] > '9')
+            return 0;
+    }
+
+    return 1;
+}
