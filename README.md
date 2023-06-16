@@ -1,82 +1,48 @@
-# Mini-Project-Using-Data-Structures
-## The title of the project is "Dairy &amp; Poultry Care Center".
+# Livestock Ledger
 
-The project Poultry and Dairy Care Center is about managing the record or information of all
-the dairy animals and poultry birds that are present in the care center. Today, there are many
-care centers in India. Some of them are babies care centers, care centers for old persons,
-orphans, and pets, but this project helps to manage the record, especially for dairy and poultry
-animals and birds respectively. So, they use ledgers for managing records, which is not an easy
-task to maintain. Writing too much data is very difficult because it consumes a lot of time and
-effort of the user. Nowadays people are using various methods to work smartly so that there is
-no wastage of time and they had not to do work hard. So, we can use this project to overcome
-all these problems. It is helpful for the worker who maintains the record of the care center
-because this project includes a menu-based concept in which there are certain options for
-managing the record. This project is completely implemented using Data Structures in the C
-Programming language. This project is easy to understand. This whole project is made using
-Turbo C/C++ software. 
+The Livestock Ledger project uses linked lists in C programming language to manage records of dairy animals and poultry birds in a care center. It provides efficient and user-friendly record management by allowing insertion, deletion, display, and searching of animal information. The project stores details such as names, categories, owners' names, contact information, and any problems associated with the animals. This helps caretakers easily access and update the records, improving overall efficiency and organization.
 
-## Methodology
+## Deployment
 
-Here I implemented this project with the data structures in c language and the data
-structure which I used here is a linked list and some arrays. I use the basic operations of a
-single linked list to make this project like insertion, deletion, display, searching and the
-different arrays are used to store the basic details of the pet like his name, problem,
-category……etc. 
+Run this code in VS Code with a properly configured C compiler.
 
-## Data Structures Used
+## Screenshots
 
-**LINKED LISTS:**
+- Login
 
-Here the linked list is used to store the pet’s information, such as its name, category, its
-owner’s name, contact of the owner, and the problem which pet has. The structure of the
-linked list consists the fields like day, date, category, name, owner name, problem, mobile,
-and a pointer next which points to the next node. Using linked lists, pet data is stored in
-different nodes. The pointer next is a self-referential structure.
+![Screenshot 2023-06-16 214458](https://github.com/manik-18/Livestock-Ledger/assets/102967918/3855dc6a-4a7e-49e9-8b75-793585bfae83)
 
-A linked list is a linear data structure in which the elements are not stored at contiguous
-memory locations. The elements in a linked list are linked using pointers. A linked list is a
-collection of nodes in which each node consists of two parts, a data part that stores the
-actual information and a link part that stores the address of the next node means it points
-to the next node.
+- MENU
 
-**SINGLY LINKED LIST:**
+![Screenshot 2023-06-16 214515](https://github.com/manik-18/Livestock-Ledger/assets/102967918/75d7caa3-0e8d-433e-96fc-f3edec67c405)
 
-It is the simplest type of linked list. A singly-linked list is a collection of nodes in which
-each node of the singly linked list contains two parts one is the data part or info part which
-contains the information stored in the node and a Link part which contains the address of
-the next node. The nodes are connected via the links. There is also a start/head node which
-consists of the address of the first node means it will point to the first node and the linked
-part of the last’s node consists of a NULL value. 
+- INSERT
 
-**ARRAYS:**
+![Screenshot 2023-06-16 214621](https://github.com/manik-18/Livestock-Ledger/assets/102967918/c72f46cd-8ecb-48f7-9a35-ea29dd4010a1)
 
-An array is a collection of similar types of data items and each data item is called an
-element of the array. The elements of the array share the same variable name but each
-element has a different index number known as a subscript. In C the subscripts start from
-0.
-Arrays can be single dimensional or multidimensional. The number of subscripts
-determines the dimension of an array.
+- DISPLAY
 
-**Declaration of a 1-D array:**
+![Screenshot 2023-06-16 214635](https://github.com/manik-18/Livestock-Ledger/assets/102967918/ca78b3d3-6cd5-48b0-8f5a-f555520a5778)
 
-datatype array_name [SIZE]; 
-Here array_name denotes the name of the array and it can be any valid C identifier.
-Datatype is the datatype of the elements of an array.
-The size of the array specifies the number of elements that can be stored in the array. 
+- SEARCH
 
-## Software requirements:
+![Screenshot 2023-06-16 214655](https://github.com/manik-18/Livestock-Ledger/assets/102967918/f4df4d7b-ffe5-42a8-b9d4-a524de98499c)
 
-TURBO C/C++, 
-DEV C++, 
-VISUAL STUDIO CODE ( IDE )
+- MODIFY
+
+![Screenshot 2023-06-16 220202](https://github.com/manik-18/Livestock-Ledger/assets/102967918/5283e4cf-cf50-411a-a936-00f53d840240)
+
+- DELETE
+
+![Screenshot 2023-06-16 220220](https://github.com/manik-18/Livestock-Ledger/assets/102967918/3caca75b-acf2-4c6e-9e0a-6d48606456c1)
 
 ## Author
 
-https://github.com/manik-18
+- [@manik-18](https://github.com/manik-18)
 
-## Contact:
+## Feedback
 
-If any issue is there or you want to give any type of feedback then mail me @guptamanik1810@gmail.com
+If you have any feedback, please reach out to us at @guptamanik1810@gmail.com
 
 
 
