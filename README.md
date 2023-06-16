@@ -1,6 +1,10 @@
 # Livestock Ledger
 
-The Livestock Ledger project uses linked lists in C programming language to manage records of dairy animals and poultry birds in a care center. It provides efficient and user-friendly record management by allowing insertion, deletion, display, and searching of animal information. The project stores details such as names, categories, owners' names, contact information, and any problems associated with the animals. This helps caretakers easily access and update the records, improving overall efficiency and organization.
+The Livestock Ledger project uses linked lists in ![C](https://img.shields.io/badge/C-language-blue) to manage records of dairy animals and poultry birds in a care center. It provides efficient and user-friendly record management by allowing insertion, deletion, display, and searching of animal information. The project stores details such as names, categories, owners' names, contact information, and any problems associated with the animals. This helps caretakers easily access and update the records, improving overall efficiency and organization.
+
+## Language Used
+
+
 
 ## Deployment
 
